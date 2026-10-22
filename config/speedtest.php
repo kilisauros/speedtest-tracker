@@ -29,6 +29,28 @@ return [
 
     'interface' => env('SPEEDTEST_INTERFACE'),
 
+    /**
+     * Service for the SPEEDTEST_SCHEDULE schedule: ookla, cloudflare, yandex, iperf3 or file.
+     * More schedules, sources and measurement settings are managed under Settings → Speedtests,
+     * the variables below only provide their initial values.
+     */
+    'service' => env('SPEEDTEST_SERVICE', 'ookla'),
+
+    'http' => [
+        'duration' => (int) env('SPEEDTEST_HTTP_DURATION', 10),
+        'streams' => (int) env('SPEEDTEST_HTTP_STREAMS', 4),
+    ],
+
+    'iperf3' => [
+        'servers' => env('SPEEDTEST_IPERF3_SERVERS'),
+        'duration' => (int) env('SPEEDTEST_IPERF3_DURATION', 10),
+        'streams' => (int) env('SPEEDTEST_IPERF3_STREAMS', 4),
+    ],
+
+    'file' => [
+        'urls' => env('SPEEDTEST_FILE_URLS'),
+    ],
+
     'preflight' => [
         'external_ip_url' => env('SPEEDTEST_CHECKINTERNET_URL') ?? env('SPEEDTEST_EXTERNAL_IP_URL', 'https://icanhazip.com'),
         'internet_check_hostname' => env('SPEEDTEST_CHECKINTERNET_URL') ?? env('SPEEDTEST_INTERNET_CHECK_HOSTNAME', 'icanhazip.com'),
