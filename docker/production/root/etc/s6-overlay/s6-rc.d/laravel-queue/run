@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Change to the application directory
+cd /var/www/html
+
+# Run the Laravel queue worker
+php artisan queue:work --quiet --sleep=5 --tries=3

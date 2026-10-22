@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Change to the application directory
+cd /var/www/html
+
+# Run the Laravel scheduler every minute
+php artisan schedule:work --quiet
